@@ -40,7 +40,10 @@ body {
 
 .heading {
   &__primary {
-
+    color: var(--color-primary);
+    font-size: 2.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
   }
 
   &__secondary {

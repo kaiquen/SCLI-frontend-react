@@ -1,49 +1,25 @@
-import { FiBox, FiChevronLeft, FiHome, FiPlus, FiUser, FiUserMinus } from "react-icons/fi"
-import { Card } from "../../components/Card";
-import { Footer } from "../../components/Footer";
-import { Header } from "../../components/Header";
+import { Home } from "../../components/Home";
+
+import { Layout } from "../../components/Layout";
 import styles from "./styles.module.scss"
 
 const Reposicao = () => {
   return (
-    <div className={styles.container}>
-      <Header title="Reposicao"/>
-
-      <main className={styles.main}>
-        <nav className={styles.menu}>
-          <ul className={styles.nav}>
-            <li className={styles.nav__item}>
-              <FiHome className={styles.nav__icon}/>
-              <a href="#">Home</a>
-            </li>
-            <li className={styles.nav__item}>
-              <FiUser className={styles.nav__icon}/>
-              <a href="#">Gerente</a>
-            </li>
-            <li className={styles.nav__item}>
-              <FiBox className={styles.nav__icon}/>
-              <a href="#">Reposição</a>
-            </li>
-          </ul>
-        </nav>
-
-        <div className={styles.content}>
-          <div className={styles.content__header}>
-            <div className={styles.content__title}>
-              <h2 className="heading__secondary">Manutenção de cadastro</h2>
-              <FiPlus className={styles.content__icon}/>
-            </div>
-            <h3 className="heading__tertiary">Gerente</h3>
-          </div>
-          <div className={styles.box}>
-            <Card />
-            <Card />
-          </div>
-        </div>
-      </main>
-
-      <Footer/>
-    </div>
+    <Layout
+      item1="Home"
+      item2="Gerente"
+      item3="Reposicao"
+      link1="/rep"
+      link2="/rep/gerente"
+      link3="/rep/reposicao"
+    >
+      <Home 
+        nome="Kaique Nascente Januário" 
+        photo="./images/kaique.jpeg"
+        manutencaoCadastro="Gerente" 
+        regraNegocio1="1. Gerente terá limite de 1.000,00 semanal."
+        regraNegocio2="2. Gerete poderá comprar 10 produtos por Fornecedor semanal."/>
+  </Layout>
   );
 }
 

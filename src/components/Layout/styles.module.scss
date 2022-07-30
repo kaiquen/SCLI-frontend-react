@@ -1,0 +1,52 @@
+.container {
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+}
+
+.menu {
+  height: 100%;
+}
+
+.nav {
+  background-color: #fff;
+
+  list-style: none;
+
+  &__icon {
+    width: 2rem;
+    height: 2rem;
+    margin-right: 1rem;
+    color: var(--color-secondary);
+  }
+
+  &__item {
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    a {
+      text-decoration: none;
+      color: var(--color-secondary);
+      font-size: 1.8rem;
+    }  
+  }
+}
+
+
+
+.box {
+  
+}
+.footer {
+
+}
+
+
