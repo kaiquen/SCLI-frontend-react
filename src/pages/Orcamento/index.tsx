@@ -13,17 +13,23 @@ const Orcamento = () => {
     }
     return (
         <div className={styles.main}>
-            <h1>Orçamento</h1>
+            <h1>ORÇAMENTO</h1><br />
             
-                <form onSubmit={submitForm}>
-                    <input
-                        value={term}
-                        onChange={(e) => setTerm(e.target.value)}
-                        type="text"
-                        placeholder="Enter a term"
-                        className="input"
-                    />
-                    <button type="submit" className="btn">Submit</button>
+            <form onSubmit={submitForm}>
+                <label>Nome </label>
+                <select value={term} onChange={(e) => setTerm(e.target.value)} placeholder="Selecione um cliente" className="input" /><br />
+                <label>Serviço </label>
+                <input value={term} onChange={(e) => setTerm(e.target.value)} placeholder="Serviço" className="input" /><br />
+                <label>Descrição </label>
+                <textarea value={term} onChange={(e) => setTerm(e.target.value)}  placeholder="Descrição do serviço" className="input" /><br />
+                <label>Data de Início </label>
+                <input value={term} onChange={(e) => setTerm(e.target.value)} type="date" placeholder="Data de início" className="input" /><br />
+                <label>Data de entrega </label>
+                <input value={term} onChange={(e) => setTerm(e.target.value)} type="date" placeholder="Data de entrega" className="input" /><br />
+                <label>Valor </label>
+                <input value={term} onChange={(e) => setTerm(e.target.value)} placeholder="Valor" className="input" /><br /><br />
+                <button type="submit" className="btn">Cancelar</button>
+                <button type="submit" className="btn">Confirmar</button>
                 </form>
         </div>
     );
