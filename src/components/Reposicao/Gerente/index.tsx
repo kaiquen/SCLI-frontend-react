@@ -1,10 +1,7 @@
-import { useEffect } from "react";
-import { useGerente } from "../../hooks/useGerente";
-import api from "../../services/api";
+import { useGerente } from "../../../hooks/useGerente";
 import { Card } from "./Card";
-import { Content } from "../Content";
-import { Layout } from "../Layout";
-import styles from "./styles.module.scss";
+import { Content } from "../../Content";
+import { Layout } from "../../Layout";
 
 const Gerente = () => {
   const { gerente } = useGerente();

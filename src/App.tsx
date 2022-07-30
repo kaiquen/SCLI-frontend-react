@@ -4,9 +4,8 @@ import { Reposicao as Rep } from "./pages/Reposicao";
 import { Orcamento } from "./pages/Orcamento";
 import { Cliente } from "./pages/Cliente";
 import "./global/styles.scss";
-import { Gerente } from "./components/Gerente";
+import { Gerente } from "./components/Reposicao/Gerente";
 import { Reposicao } from "./components/Reposicao";
-import { GerenteContext, GerenteProvider } from "./contexts/gerente";
 
 function App() {
   return (

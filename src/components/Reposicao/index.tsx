@@ -1,4 +1,3 @@
-import { FiPlus } from "react-icons/fi";
 import { useReposicao } from "../../hooks/useReposicao";
 import { Card } from "./Card";
 import { Content } from "../Content";

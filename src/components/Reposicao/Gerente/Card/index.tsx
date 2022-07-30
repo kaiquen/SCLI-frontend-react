@@ -1,5 +1,5 @@
 import { FiEdit3, FiTrash2 } from "react-icons/fi";
-import { IGerente } from "../../../contexts/gerente";
+import { IGerente } from "../../../../contexts/gerente";
 import styles from "./styles.module.scss";
 
 const Card = ({nome}:IGerente) => {
