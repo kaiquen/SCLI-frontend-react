@@ -12,6 +12,7 @@ const Gerente = () => {
       link1="/rep"
       link2="/rep/gerente"
       link3="/rep/reposicao"
+      title="Gerente"
     >
       <Content title="Manutenção de cadastro" subTitle="Gerente">
           <Card />

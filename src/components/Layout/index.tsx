@@ -13,12 +13,13 @@ type IProps = {
   link2:string;
   link3:string;
   
+  title?:string;
   children:any
 }
-const Layout = ({item1, item2, item3, link1, link2, link3, children}:IProps) => {
+const Layout = ({item1, item2, item3, link1, link2, link3, title, children}:IProps) => {
   return (
     <div className={styles.container}>
-    <Header title="Reposicao"/>
+    <Header title={title}/>
 
     <main className={styles.main}>
       <nav className={styles.menu}>

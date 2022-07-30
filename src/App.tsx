@@ -16,7 +16,7 @@ function App() {
         <Route path="rep" element={<Rep />} />
         <Route path="rep/gerente" element={<Gerente />} />
         <Route path="rep/reposicao" element={<Reposicao />} />
-    
+
         <Route path="orcamento" element={<Orcamento />} />
         <Route path="cliente" element={<Cliente />} />
 

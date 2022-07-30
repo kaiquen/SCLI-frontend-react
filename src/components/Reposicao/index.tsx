@@ -13,6 +13,7 @@ const Reposicao = () => {
       link1="/rep"
       link2="/rep/gerente"
       link3="/rep/reposicao"
+      title="Reposição"
     >
       <Content title="Regra de negócio" subTitle="Reposição">
         <Card />
