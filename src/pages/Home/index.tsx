@@ -11,9 +11,9 @@ const Home = () => {
       link2="/pedido"
       link3="/rep"
       title="SCLI"
-      >
+    >
       
-  </Layout>
+    </Layout>
   );
 }
 

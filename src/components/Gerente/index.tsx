@@ -1,9 +1,14 @@
-import { Card } from "../Card";
+import { useEffect } from "react";
+import { useGerente } from "../../hooks/useGerente";
+import api from "../../services/api";
+import { Card } from "./Card";
 import { Content } from "../Content";
 import { Layout } from "../Layout";
 import styles from "./styles.module.scss";
 
 const Gerente = () => {
+  const { gerente } = useGerente();
+  
   return (
     <Layout
       item1="Home"
@@ -15,8 +20,13 @@ const Gerente = () => {
       title="Gerente"
     >
       <Content title="Manutenção de cadastro" subTitle="Gerente">
-          <Card />
-          <Card />
+          {
+            gerente.map(item => {
+              return (
+                <Card key={item.id} {...item}/>
+              )
+            })
+          }
       </Content>
     </Layout>
   )

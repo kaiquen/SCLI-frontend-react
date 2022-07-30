@@ -1,26 +1,46 @@
 import { createContext, useEffect, useState } from "react";
 import api from "../services/api";
+import { GerenteProvider, IGerente } from "./gerente";
 
 
-export const ReposicaoContext = createContext({});
+export const ReposicaoContext = createContext({} as IProps);
 
-type reposicao = {
+type IProps = {
+  reposicao: IReposicao[];
+}
 
+type IFornecedor = {
+  id:number;
+  nome:string;
+  cpf:string;
+  uf:string;
+  cidade:string;
+  bairro:string;
+  rua:string;
+}
+
+export type IReposicao = {
+  id:string;
+  quantidade:string;
+  gerente: IGerente;
+  fornecedor: IFornecedor;
 }
 
 export const ReposicaoProvider = (props:any) => {
-  const [reposicao, setReposicao] = useState([]);
+  const [reposicao, setReposicao] = useState<IReposicao[]>([]);
+  
   useEffect(() => {
-    const getReposicao = async () => {
-      const data = await api.get("/reposicao");
-      console.log(data);  
-    }
-
-    getReposicao()
+    (async () => {
+      const {data} = await api.get("/reposicao");
+      setReposicao(data);
+    })()
   }, [])
+
   return (
-    <ReposicaoContext.Provider value={{}}>
-      {props.children}
+    <ReposicaoContext.Provider value={{reposicao}}>
+      <GerenteProvider>
+        {props.children}
+      </GerenteProvider>
     </ReposicaoContext.Provider>
   )
 }

@@ -1,10 +1,12 @@
 import { FiPlus } from "react-icons/fi";
-import { Card } from "../Card";
+import { useReposicao } from "../../hooks/useReposicao";
+import { Card } from "./Card";
 import { Content } from "../Content";
 import { Layout } from "../Layout";
 import styles from "./styles.module.scss";
 
 const Reposicao = () => {
+  const { reposicao } = useReposicao();
   return (
     <Layout
       item1="Home"
@@ -16,8 +18,13 @@ const Reposicao = () => {
       title="Reposição"
     >
       <Content title="Regra de negócio" subTitle="Reposição">
-        <Card />
-        <Card />
+        {
+          reposicao.map(item => {
+            return (
+              <Card key={item.id} {...item}/>
+            )
+          })
+        }
       </Content>
     </Layout>
   )
