@@ -30,9 +30,8 @@ export const ModalsProvider = (props:any) => {
   }
 
   const handleModalAdd = () => {
-    setModalEdit(!modalAdd);
+    setModalAdd(!modalAdd);
   }
-
 
   const handleTrash = async (id:number, url:string) => {
     try {

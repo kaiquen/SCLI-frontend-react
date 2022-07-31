@@ -25,8 +25,6 @@
   background-color: transparent;
   color: #fff;
   border: .1rem solid #fff;
-
- 
 }
 
 .green {
@@ -36,6 +34,6 @@
 
 .transparent {
   background-color: transparent;
-  border: .1rem solid var(--color-text);
-  color: var(--color-text);
+  border: .1rem solid var(--color-secondary);
+  color: var(--color-secondary);
 }

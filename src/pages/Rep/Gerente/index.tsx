@@ -4,6 +4,7 @@ import { Layout } from "../../../components/Layout";
 import { IGerente } from "../../../models/gerente";
 import api from "../../../services/api";
 import { Card } from "./Card";
+import { ModalAdd } from "./Modals/ModalAdd";
 
 
 const Gerente = () => {
@@ -26,7 +27,11 @@ const Gerente = () => {
       link3="/rep/reposicao"
       title="Gerente"
     >
-      <Content title="Manutenção de cadastro" subTitle="Gerente">
+      <Content 
+        title="Manutenção de cadastro" 
+        subTitle="Gerente"
+        url="/gerente"
+        modal={ModalAdd}>
           {
             gerente.map(item => {
               return (

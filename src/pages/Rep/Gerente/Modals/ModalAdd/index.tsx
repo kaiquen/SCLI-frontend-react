@@ -1,22 +1,20 @@
-import { useModals } from "../../../hooks/useModals";
-import { Button } from "../../Button";
-import { FormGroup } from "../../FormGroup";
-import { Input } from "../../Input/intex";
+
+import { Button } from "../../../../../components/Button";
+import { FormGroup } from "../../../../../components/FormGroup";
+import { Input } from "../../../../../components/Input/intex";
+import { Modal } from "../../../../../components/Modals";
+import { useModals } from "../../../../../hooks/useModals";
 import styles from "./styles.module.scss";
 
 type IProps = {
-  id: number;
-  url: string;
+  url?: string;
 }
 
-const ModalAdd = ({id, url}:IProps) => {
-  const { modalAdd } = useModals();
+const ModalAdd = ({url}:IProps) => {
+  const { modalAdd, handleModalAdd } = useModals();
   
   return (
-    <div 
-      className={styles.modal}
-      style={modalAdd ? {display:"flex"} : {display: "none"}}>
-      <div className={styles.modal__content}>
+    <Modal modal={modalAdd} handleModal={handleModalAdd} >
         <div className={styles.modal__header}>
             <h2 className="heading__secondary">Adicionar gerente</h2>
         </div>
@@ -106,8 +104,7 @@ const ModalAdd = ({id, url}:IProps) => {
               />
           </FormGroup>
         </form>
-      </div>  
-    </div>   
+    </Modal>
   )
 }
 

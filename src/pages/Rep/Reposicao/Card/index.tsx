@@ -21,6 +21,7 @@ const Card = ({id}:IReposicao) => {
           <FiEdit3 className={[styles.icon, styles["icon--edit"]].join(" ")}  onClick={handleModalEdit} />
           <FiTrash2 className={[styles.icon, styles["icon--trash"]].join(" ")} onClick={handleModalTrash} />
         </div>
+        
         <ModalTrash id={id} url={baseUrlReposicao}/>
     </div>
   )

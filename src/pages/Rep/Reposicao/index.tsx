@@ -4,6 +4,7 @@ import { Layout } from "../../../components/Layout";
 import { IReposicao } from "../../../models/reposicao";
 import api from "../../../services/api";
 import { Card } from "./Card";
+import { ModalAdd } from "./Modals/ModalAdd";
 
 import styles from "./styles.module.scss";
 
@@ -27,7 +28,10 @@ const Reposicao = () => {
       link3="/rep/reposicao"
       title="Reposição"
     >
-      <Content title="Regra de negócio" subTitle="Reposição">
+      <Content 
+        title="Regra de negócio" 
+        subTitle="Reposição"
+        modal={ModalAdd}>
         {
           reposicao.map(item => {
             return (

@@ -1,4 +1,4 @@
-import { useModals } from "../../../hooks/useModals";
+import { useModals } from "../../../../../hooks/useModals";
 import styles from "./styles.module.scss";
 
 type IProps = {
@@ -7,15 +7,16 @@ type IProps = {
 }
 
 const ModalEdit = ({id, url}:IProps) => {
-  const { modalEdit } = useModals();
+  const { modalEdit, handleModalEdit } = useModals();
 
   return (
     <div 
-      className={styles.container}
+      className={styles.modal}
       style={modalEdit ? {display:"flex"} : {display: "none"}}>
-      <div className={styles.content}>
+      <div className={styles.modal__content}>
       
       </div>  
+      <div className={styles.modal__overlay} onClick={handleModalEdit}></div>
     </div>   
   )
 }

@@ -1,6 +1,4 @@
 import { FiEdit3, FiTrash2 } from "react-icons/fi";
-import { ModalAdd } from "../../../../components/Modals/ModalAdd";
-import { ModalEdit } from "../../../../components/Modals/ModalEdit";
 import { ModalTrash } from "../../../../components/Modals/ModalTrash";
 import { useModals } from "../../../../hooks/useModals";
 import { IGerente } from "../../../../models/gerente";
@@ -25,8 +23,6 @@ const Card = ({nome, id}:IGerente) => {
         </div>
 
         <ModalTrash id={id} url={baseUrlGerente}/>
-        <ModalAdd id={id} url={baseUrlGerente}/>   
-        <ModalEdit id={id} url={baseUrlGerente}/>
     </div>
   )
 }
