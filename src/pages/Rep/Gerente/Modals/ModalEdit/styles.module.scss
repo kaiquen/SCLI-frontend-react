@@ -10,26 +10,18 @@
   justify-content: center;
 
   &__content {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 40rem;
-    height: 12rem;
-    background-color: #fff;
-    border-radius: .5rem;
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 0px;
-    z-index: 2;
+      width: 60rem;
+      height: 62rem;
+      background-color: #fff;
+      padding: 3rem;
+      border-radius: .5rem;
+      box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 0px;
+      z-index: 2;
   }
-
   &__header {
-    text-align: center; 
-    margin-top: 3rem;
+      text-align: center;
+      margin-bottom: 2rem;
   }
-
-  &__btnBox {
-    display: flex;
-  }
-  
   &__overlay {
       position: absolute;
       width: 100%;
@@ -37,3 +29,17 @@
   }     
 }
 
+.group {
+  display: flex;
+  
+  &--split {
+    width: 2rem;
+  }
+}
+
+.span {
+  color: var(--color-notify);
+  font-size: 1.6rem;
+  font-weight: 400;
+  letter-spacing: .1rem;
+}

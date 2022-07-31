@@ -7,10 +7,9 @@ type IProps = {
   subTitle: string;
   children?: any;
   modal?: any;
-  url?: string;
 }
 
-const Content = ({title, subTitle, children, url, modal}:IProps) => {
+const Content = ({title, subTitle, children, modal}:IProps) => {
   const { handleModalAdd } = useModals();
 
   return (

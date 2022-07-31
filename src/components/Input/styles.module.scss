@@ -10,7 +10,8 @@
     border-radius: .1rem;
     
     &--border {
-        border: .1rem solid black;
+      background-color: #f4f4f4;
+      padding: 2rem 1rem;
     }
 
     &--disabled {

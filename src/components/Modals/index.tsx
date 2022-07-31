@@ -12,9 +12,7 @@ const Modal = ({children, modal, handleModal}:IProps) => {
     <div 
       className={styles.modal}
       style={modal ? {display:"flex"} : {display: "none"}}>
-      <div className={styles.modal__content}>
         {children}
-      </div>  
       <div className={styles.modal__overlay} onClick={handleModal}></div>
     </div>   
   )

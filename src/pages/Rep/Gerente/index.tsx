@@ -30,7 +30,6 @@ const Gerente = () => {
       <Content 
         title="Manutenção de cadastro" 
         subTitle="Gerente"
-        url="/gerente"
         modal={ModalAdd}>
           {
             gerente.map(item => {

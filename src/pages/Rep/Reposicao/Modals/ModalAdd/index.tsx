@@ -15,6 +15,7 @@ const ModalAdd = ({url}:IProps) => {
   
   return (
     <Modal modal={modalAdd} handleModal={handleModalAdd} >
+      <div className={styles.modal__content}>
         <div className={styles.modal__header}>
             <h2 className="heading__secondary">Adicionar Reposicao</h2>
         </div>
@@ -23,7 +24,6 @@ const ModalAdd = ({url}:IProps) => {
             <Input 
                 inputClassName='--border'
                 type="text" 
-                label='Nome' 
                 labelClassName='--black'
             />
           </FormGroup>
@@ -31,7 +31,6 @@ const ModalAdd = ({url}:IProps) => {
             <Input 
                 inputClassName='--border'
                 type="text" 
-                label='Cpf' 
                 labelClassName='--black'
             />
           </FormGroup>
@@ -39,7 +38,6 @@ const ModalAdd = ({url}:IProps) => {
               <Input 
                   inputClassName='--border'
                   type="text" 
-                  label='Email' 
                   labelClassName='--black'
               />
           </FormGroup>
@@ -47,7 +45,6 @@ const ModalAdd = ({url}:IProps) => {
               <Input 
                   inputClassName='--border'
                   type="password" 
-                  label='Senha' 
                   labelClassName='--black'
               />
           </FormGroup>   
@@ -56,7 +53,6 @@ const ModalAdd = ({url}:IProps) => {
                 <Input 
                     inputClassName='--border'
                     type="text" 
-                    label='Uf' 
                     labelClassName='--black'
                     
                 />
@@ -66,7 +62,6 @@ const ModalAdd = ({url}:IProps) => {
                 <Input 
                     inputClassName='--border'
                     type="text" 
-                    label='Cidade' 
                     labelClassName='--black'
                     
                 />
@@ -77,7 +72,6 @@ const ModalAdd = ({url}:IProps) => {
                 <Input 
                     inputClassName='--border'
                     type="text" 
-                    label='Bairro' 
                     labelClassName='--black'
                     
                 />
@@ -87,7 +81,6 @@ const ModalAdd = ({url}:IProps) => {
                 <Input 
                     inputClassName='--border'
                     type="text" 
-                    label='Rua' 
                     labelClassName='--black'
                     
                 />
@@ -104,6 +97,7 @@ const ModalAdd = ({url}:IProps) => {
               />
           </FormGroup>
         </form>
+      </div>
     </Modal>
   )
 }
