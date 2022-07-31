@@ -1,6 +1,5 @@
-import { FiBox, FiHome, FiPlus, FiUser } from "react-icons/fi";
+import { FiBox, FiHome, FiUser } from "react-icons/fi";
 import { Link } from "react-router-dom";
-import { Card } from "../Card";
 import { Footer } from "../Footer";
 import { Header } from "../Header";
 import styles from "./styles.module.scss";

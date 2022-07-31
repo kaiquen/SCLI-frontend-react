@@ -1,11 +1,11 @@
 
+import { Home } from "../../components/Home";
 import { Layout } from "../../components/Layout";
-import { Home } from "../../components/Reposicao/Home";
 import styles from "./styles.module.scss"
 
-const Reposicao = () => {
+const Rep = () => {
   return (
-    <Layout
+      <Layout
       item1="Home"
       item2="Gerente"
       item3="Reposicao"
@@ -20,8 +20,8 @@ const Reposicao = () => {
         manutencaoCadastro="Gerente" 
         regraNegocio1="1. Gerente terá limite de 1.000,00 semanal."
         regraNegocio2="2. Gerete poderá comprar 10 produtos por Fornecedor semanal."/>
-  </Layout>
+    </Layout>
   );
 }
 
-export { Reposicao }
+export { Rep }

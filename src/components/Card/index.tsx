@@ -8,8 +8,7 @@ const Card = () => {
         <div className={styles.tools}>
           <FiEdit3 className={[styles.icon, styles["icon--edit"]].join(" ")}/>
           <FiTrash2 className={[styles.icon, styles["icon--trash"]].join(" ")}/>
-        </div>
-        
+        </div> 
     </div>
   )
 }

@@ -1,0 +1,33 @@
+
+.input {
+    color: var(--primary-color-dark);
+    font-size: 1.4rem;
+    width: 100%;
+    height: 3.5rem;
+    margin-top: .5rem;
+    padding: 1rem;
+    border: none;
+    border-radius: .1rem;
+    
+    &--border {
+        border: .1rem solid black;
+    }
+
+    &--disabled {
+        padding: 2rem 1rem;
+        background-color: #f4f4f4;
+        cursor: not-allowed;
+    }
+}
+
+
+.label {
+    width: 100%;
+    float: left;
+    font-size: 1.6rem;
+    color: #fff;
+
+    &--black {
+        color: var(--color-text);
+    }
+}

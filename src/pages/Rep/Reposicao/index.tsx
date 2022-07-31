@@ -1,11 +1,22 @@
-import { useReposicao } from "../../hooks/useReposicao";
+import { useEffect, useState } from "react";
+import { Content } from "../../../components/Content";
+import { Layout } from "../../../components/Layout";
+import { IReposicao } from "../../../models/reposicao";
+import api from "../../../services/api";
 import { Card } from "./Card";
-import { Content } from "../Content";
-import { Layout } from "../Layout";
+
 import styles from "./styles.module.scss";
 
 const Reposicao = () => {
-  const { reposicao } = useReposicao();
+  const [reposicao, setReposicao] = useState<IReposicao[]>([]);
+  
+  useEffect(() => {
+    (async () => {
+      const {data} = await api.get("/reposicao");
+      setReposicao(data);
+    })()
+  }, [])
+
   return (
     <Layout
       item1="Home"

@@ -1,11 +1,21 @@
-import { useGerente } from "../../../hooks/useGerente";
+import { useEffect, useState } from "react";
+import { Content } from "../../../components/Content";
+import { Layout } from "../../../components/Layout";
+import { IGerente } from "../../../models/gerente";
+import api from "../../../services/api";
 import { Card } from "./Card";
-import { Content } from "../../Content";
-import { Layout } from "../../Layout";
+
 
 const Gerente = () => {
-  const { gerente } = useGerente();
-  
+  const [gerente, setGerente] = useState<IGerente[]>([]);
+
+  useEffect (() => {
+    (async () => {
+      const {data} = await api.get("/gerente");
+      setGerente(data);
+    })()
+  }, []);
+
   return (
     <Layout
       item1="Home"
