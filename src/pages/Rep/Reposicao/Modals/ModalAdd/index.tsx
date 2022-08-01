@@ -27,6 +27,8 @@ const ModalAdd = ({handleModalAdd, modalAdd}:IProps) => {
 
   const [quantidade, setQuantidade] = useState<number>(1);
   
+  const [error, setError] = useState<string>("");
+
   const handleSelecionarFornecedor = (event:any) => {
     setFornecedorSelecionado(event.target.value)
   }
@@ -52,9 +54,11 @@ const ModalAdd = ({handleModalAdd, modalAdd}:IProps) => {
             produto:JSON.parse(produtoSelecionado)
         }]
       })
-      console.log(data)
-    } catch (error) {
-      alert(error)
+      
+      data && handleModalAdd();
+      
+    } catch (error:any) {
+      setError(error.response.data.message)
     }
   }
   
@@ -153,6 +157,11 @@ const ModalAdd = ({handleModalAdd, modalAdd}:IProps) => {
           </FormGroup> 
             <br/>
             <br/>
+          {error && (
+            <FormGroup>
+              <span className={styles.span}>{error}</span>
+            </FormGroup>
+          )}
           <FormGroup>
             <Button
               type="submit"

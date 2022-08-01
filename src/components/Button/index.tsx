@@ -9,13 +9,13 @@ interface IButton {
 
 const Button = ({title, className, type, onClick}:IButton) => {
     return (
-        <button 
-            type={type} 
-            className={[styles.container, styles[`${className}`]].join(" ")}
-            onClick={onClick}
-        >
-            {title}
-        </button>
+      <button 
+          type={type} 
+          className={[styles.container, styles[`${className}`]].join(" ")}
+          onClick={onClick}
+      >
+        {title}
+      </button>
     );
 }
 
