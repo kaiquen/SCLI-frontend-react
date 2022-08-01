@@ -3,7 +3,7 @@ import styles from './styles.module.scss';
 interface IInput {
     label?: string;
     type: string;
-    value?: string;
+    value?: string | number;
     setValue?: any;
     inputClassName?: string;
     labelClassName?:string;

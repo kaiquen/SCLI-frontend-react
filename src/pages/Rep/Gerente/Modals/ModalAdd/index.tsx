@@ -1,11 +1,9 @@
 
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { Button } from "../../../../../components/Button";
 import { FormGroup } from "../../../../../components/FormGroup";
 import { Input } from "../../../../../components/Input/intex";
 import { Modal } from "../../../../../components/Modals";
-import { useModals } from "../../../../../hooks/useModals";
 import api from "../../../../../services/api";
 import styles from "./styles.module.scss";
 

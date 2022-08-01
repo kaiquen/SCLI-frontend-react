@@ -3,6 +3,7 @@ import { FiEdit3, FiTrash2 } from "react-icons/fi";
 import { ModalTrash } from "../../../../components/Modals/ModalTrash";
 import { IReposicao } from "../../../../models/reposicao";
 import api from "../../../../services/api";
+import { ModalEdit } from "../Modals/ModalEdit";
 
 import styles from "./styles.module.scss";
 
@@ -41,6 +42,7 @@ const Card = ({reposicao, setReposicao}:IProps) => {
         </div>
 
         <ModalTrash id={reposicao.id} url={baseUrlReposicao} modalTrash={modalTrash} handleModalTrash={handleModalTrash}/>
+        <ModalEdit reposicao={{...reposicao}} modalEdit={modalEdit} handleModalEdit={handleModalEdit}/>
     </div>
   )
 }

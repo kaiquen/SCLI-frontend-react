@@ -1,18 +1,15 @@
 import { useState } from "react";
+import { IReposicao } from "../../../../../models/reposicao";
 import styles from "./styles.module.scss";
 
 type IProps = {
-  id: number;
-  url: string;
+  reposicao: IReposicao;
+  handleModalEdit():void;
+  modalEdit: boolean;
 }
 
-const ModalEdit = ({id, url}:IProps) => {
-  const [modalEdit, setModalEdit] = useState<boolean>(false);
-
-  const handleModalEdit = () => {
-
-  }
-  
+const ModalEdit = ({modalEdit, handleModalEdit, reposicao}:IProps) => {
+ 
   return (
     <div 
       className={styles.modal}

@@ -47,6 +47,7 @@ const Reposicao = () => {
             )
           })
         }
+        
         <ModalAdd modalAdd={modalAdd} handleModalAdd={handleModalAdd}/>
       </Content>
     </Layout>
