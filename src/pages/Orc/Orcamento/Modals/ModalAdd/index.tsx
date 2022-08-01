@@ -17,7 +17,7 @@ const ModalAdd = ({url}:IProps) => {
     <Modal modal={modalAdd} handleModal={handleModalAdd} >
       <div className={styles.modal__content}>
         <div className={styles.modal__header}>
-            <h2 className="heading__secondary">Adicionar Orcamento</h2>
+            <h2 className="heading__secondary">Adicionar Orçamento</h2>
         </div>
         <form action="" className="form">
           <FormGroup>

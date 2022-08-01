@@ -23,11 +23,11 @@ const ModalAdd = () => {
 
   const [error, setError] = useState<string>("");
 
-  const handeAddGerente = async (event: React.FormEvent) => {
+  const handeAddCliente = async (event: React.FormEvent) => {
     event.preventDefault();
 
     try {
-      const { data } = await api.post("/gerente", {
+      const { data } = await api.post("/cliente", {
         nome,
         cpf,
         email,
@@ -50,9 +50,9 @@ const ModalAdd = () => {
     <Modal modal={modalAdd} handleModal={handleModalAdd} >
       <div className={styles.modal__content}>
         <div className={styles.modal__header}>
-            <h2 className="heading__secondary">Adicionar gerente</h2>
+            <h2 className="heading__secondary">Adicionar cliente</h2>
         </div>
-        <form className="form" onSubmit={handeAddGerente}>
+        <form className="form" onSubmit={handeAddCliente}>
           <FormGroup>
             <Input 
                 inputClassName='--border'
