@@ -30,10 +30,10 @@ const Home = ({nome, photo, manutencaoCadastro, regraNegocio1, regraNegocio2}:IP
           <h3 className="heading__secondary" style={{fontSize:"1.8rem"}}>Regra de negócio</h3>
           <ul>
             <li className={styles.item}>
-              <p>1. Gerente terá limite de 1.000,00 semanal.</p>
+              <p>{regraNegocio1}</p>
             </li>
             <li className={styles.item}>
-              <p>2. Gerete poderá comprar 10 produtos por Fornecedor semanal.</p>
+              <p>{regraNegocio2}</p>
             </li>
           </ul>
         </section>
