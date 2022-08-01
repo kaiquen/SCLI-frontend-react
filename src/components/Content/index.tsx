@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { FiPlus } from "react-icons/fi";
 import { useModals } from "../../hooks/useModals";
 import styles from "./styles.module.scss";
@@ -6,12 +7,10 @@ type IProps = {
   title: string;
   subTitle: string;
   children?: any;
-  modal?: any;
+  handleModalAdd?():void;
 }
 
-const Content = ({title, subTitle, children, modal}:IProps) => {
-  const { handleModalAdd } = useModals();
-
+const Content = ({title, subTitle, children, handleModalAdd}:IProps) => {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -24,8 +23,6 @@ const Content = ({title, subTitle, children, modal}:IProps) => {
       <div className={styles.content}>
         {children}
       </div>
-
-      {modal && modal(handleModalAdd)}
     </div>
   )
 }

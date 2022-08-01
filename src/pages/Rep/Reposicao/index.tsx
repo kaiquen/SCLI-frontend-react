@@ -6,17 +6,31 @@ import api from "../../../services/api";
 import { Card } from "./Card";
 import { ModalAdd } from "./Modals/ModalAdd";
 
-import styles from "./styles.module.scss";
-
 const Reposicao = () => {
+  const [modalAdd, setModalAdd] = useState<boolean>(false);
+  const [modalEdit, setModalEdit] = useState<boolean>(false);
+  const [modalTrash, setModalTrash] = useState<boolean>(false);
+
   const [reposicao, setReposicao] = useState<IReposicao[]>([]);
   
+  const handleModalAdd = () => {
+    setModalAdd(!modalAdd);
+  }
+
+  const handleModalEdit = () => {
+    setModalEdit(!modalEdit);
+  }
+
+  const handleModalTrash = () => {
+    setModalTrash(!modalTrash);
+  }
+
   useEffect(() => {
     (async () => {
       const {data} = await api.get("/reposicao");
       setReposicao(data);
     })()
-  }, [])
+  }, [modalAdd || modalEdit || modalTrash]);
 
   return (
     <Layout
@@ -31,14 +45,22 @@ const Reposicao = () => {
       <Content 
         title="Regra de negócio" 
         subTitle="Reposição"
-        modal={ModalAdd}>
+        handleModalAdd={handleModalAdd}>
         {
           reposicao.map(item => {
             return (
-              <Card key={item.id} {...item}/>
+              <Card 
+                key={item.id} 
+                reposicao={{...item}}
+                modalEdit={modalEdit}
+                modalTrash={modalTrash}
+                handleModalEdit={handleModalEdit}
+                handleModalTrash={handleModalTrash}
+              />
             )
           })
         }
+        <ModalAdd modalAdd={modalAdd} handleModalAdd={handleModalAdd}/>
       </Content>
     </Layout>
   )

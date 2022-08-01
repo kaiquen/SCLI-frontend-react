@@ -10,17 +10,21 @@ import { IGerente } from "../../../../../models/gerente";
 import api from "../../../../../services/api";
 import styles from "./styles.module.scss";
 
-const ModalEdit = (props:IGerente) => {
-  const { modalEdit, handleModalEdit } = useModals();
-  
-  const [nome, setNome] = useState<string>(props.nome);
-  const [cpf,setCpf] = useState<string>(props.cpf);
-  const [email, setEmail] = useState<string>(props.email);
-  const [senha, setSenha] = useState<string>(props.senha);
-  const [uf, setUf] = useState(props.uf)
-  const [cidade, setCidade] =useState<string>(props.cidade);
-  const [bairro, setBairro] = useState<string>(props.bairro);
-  const [rua, setRua] = useState<string>(props.rua);
+type IProps = {
+  gerente: IGerente;
+  handleModalEdit():void;
+  modalEdit: boolean;
+}
+
+const ModalEdit = ({gerente, modalEdit, handleModalEdit}:IProps) => {
+  const [nome, setNome] = useState<string>(gerente.nome);
+  const [cpf,setCpf] = useState<string>(gerente.cpf);
+  const [email, setEmail] = useState<string>(gerente.email);
+  const [senha, setSenha] = useState<string>(gerente.senha);
+  const [uf, setUf] = useState(gerente.uf)
+  const [cidade, setCidade] =useState<string>(gerente.cidade);
+  const [bairro, setBairro] = useState<string>(gerente.bairro);
+  const [rua, setRua] = useState<string>(gerente.rua);
 
   const [error, setError] = useState<string>("");
 
@@ -29,7 +33,7 @@ const ModalEdit = (props:IGerente) => {
 
     try {
       const { data } = await api.put("/gerente", {
-        id: props.id,
+        id: gerente.id,
         nome,
         cpf,
         email,

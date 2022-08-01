@@ -30,16 +30,12 @@ export const ModalsProvider = (props:any) => {
   }
 
   const handleModalAdd = () => {
-    setModalAdd(!modalAdd);
+    setModalEdit(!modalAdd);
   }
 
+
   const handleTrash = async (id:number, url:string) => {
-    try {
-      await api.delete(`${url}/${id}`);
-      handleModalTrash();
-    } catch (error) {
-      alert(error);
-    }    
+      
   }
 
   return (

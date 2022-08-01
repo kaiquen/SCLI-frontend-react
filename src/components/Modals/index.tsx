@@ -3,7 +3,6 @@ import styles from "./styles.module.scss";
 type IProps = {
   modal?: boolean;
   handleModal():void;
-  
   children?: any;
 }
 

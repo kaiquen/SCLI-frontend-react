@@ -1,17 +1,26 @@
 
+import { useEffect, useState } from "react";
 import { Button } from "../../../../../components/Button";
 import { FormGroup } from "../../../../../components/FormGroup";
 import { Input } from "../../../../../components/Input/intex";
 import { Modal } from "../../../../../components/Modals";
 import { useModals } from "../../../../../hooks/useModals";
+import { IFornecedor } from "../../../../../models/fornecedor";
 import styles from "./styles.module.scss";
 
 type IProps = {
-  url?: string;
+  handleModalAdd():void;
+  modalAdd: boolean;
 }
 
-const ModalAdd = ({url}:IProps) => {
-  const { modalAdd, handleModalAdd } = useModals();
+const ModalAdd = ({handleModalAdd, modalAdd}:IProps) => {
+  const [fornecedor, setFornecedor]  = useState<IFornecedor[]>([]);
+  
+  useEffect(() => {
+    (async() => {
+
+    })()
+  })
   
   return (
     <Modal modal={modalAdd} handleModal={handleModalAdd} >

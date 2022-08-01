@@ -1,4 +1,4 @@
-import { useModals } from "../../../../../hooks/useModals";
+import { useState } from "react";
 import styles from "./styles.module.scss";
 
 type IProps = {
@@ -7,8 +7,12 @@ type IProps = {
 }
 
 const ModalEdit = ({id, url}:IProps) => {
-  const { modalEdit, handleModalEdit } = useModals();
+  const [modalEdit, setModalEdit] = useState<boolean>(false);
 
+  const handleModalEdit = () => {
+
+  }
+  
   return (
     <div 
       className={styles.modal}

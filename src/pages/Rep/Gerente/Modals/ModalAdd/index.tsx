@@ -9,9 +9,12 @@ import { useModals } from "../../../../../hooks/useModals";
 import api from "../../../../../services/api";
 import styles from "./styles.module.scss";
 
-const ModalAdd = () => {
-  const { modalAdd, handleModalAdd } = useModals();
-  
+type IProps = {
+  handleModalAdd():void;
+  modalAdd: boolean;
+}
+
+const ModalAdd = ({modalAdd, handleModalAdd}:IProps) => {  
   const [nome, setNome] = useState<string>("");
   const [cpf,setCpf] = useState<string>("");
   const [email, setEmail] = useState<string>("");
@@ -37,7 +40,6 @@ const ModalAdd = () => {
         bairro,
         rua
       });
-
     
       data && handleModalAdd();
       

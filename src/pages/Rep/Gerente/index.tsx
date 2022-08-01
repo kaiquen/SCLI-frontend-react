@@ -8,14 +8,30 @@ import { ModalAdd } from "./Modals/ModalAdd";
 
 
 const Gerente = () => {
+  const [modalAdd, setModalAdd] = useState<boolean>(false);
+  const [modalEdit, setModalEdit] = useState<boolean>(false);
+  const [modalTrash, setModalTrash] = useState<boolean>(false);
+
   const [gerente, setGerente] = useState<IGerente[]>([]);
+
+  const handleModalAdd = () => {
+    setModalAdd(!modalAdd);
+  }
+
+  const handleModalEdit = () => {
+    setModalEdit(!modalEdit);
+  }
+
+  const handleModalTrash = () => {
+    setModalTrash(!modalTrash);
+  }
 
   useEffect (() => {
     (async () => {
       const {data} = await api.get("/gerente");
       setGerente(data);
     })()
-  }, []);
+  }, [modalAdd || modalEdit || modalTrash]);
 
   return (
     <Layout
@@ -30,14 +46,23 @@ const Gerente = () => {
       <Content 
         title="Manutenção de cadastro" 
         subTitle="Gerente"
-        modal={ModalAdd}>
+        handleModalAdd={handleModalAdd}>
           {
             gerente.map(item => {
               return (
-                <Card key={item.id} {...item}/>
+                <Card 
+                  key={item.id} 
+                  gerente={{...item}}
+                  modalEdit={modalEdit}
+                  modalTrash={modalTrash}
+                  handleModalEdit={handleModalEdit}
+                  handleModalTrash={handleModalTrash}
+                />
               )
             })
           }
+
+          <ModalAdd modalAdd={modalAdd} handleModalAdd={handleModalAdd}/>
       </Content>
     </Layout>
   )
