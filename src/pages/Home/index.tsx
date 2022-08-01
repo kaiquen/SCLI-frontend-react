@@ -6,8 +6,8 @@ const Home = () => {
     <Layout
       item1="Orçamento"
       item2="Pedido"
-      item3="Reposicao"
-      link1="/orcamento"
+      item3="Reposição"
+      link1="/orc"
       link2="/pedido"
       link3="/rep"
       title="SCLI"
