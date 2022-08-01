@@ -2,7 +2,7 @@ import styles from "./styles.module.scss";
 
 type IProps = {
   modal?: boolean;
-  handleModal():void;
+  handleModal?():void;
   children?: any;
 }
 

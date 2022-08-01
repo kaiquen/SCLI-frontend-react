@@ -8,15 +8,15 @@ import api from "../../../services/api";
 type IProps = {
   id: number;
   url: string;
-  modalTrash: boolean;
-  handleModalTrash():void;
+  modalTrash?: boolean;
+  handleModalTrash?():void;
 }
 
 const ModalTrash = ({id, url, modalTrash, handleModalTrash}:IProps) => {
   const handleTrash = async(id:number, url:string) => {
     try {
       await api.delete(`${url}/${id}`);
-      handleModalTrash();
+      handleModalTrash && handleModalTrash();
     } catch (error) {
       alert(error);
     } 

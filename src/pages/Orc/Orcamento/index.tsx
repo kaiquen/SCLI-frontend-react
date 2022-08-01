@@ -31,7 +31,7 @@ const Orcamento = () => {
       <Content 
         title="Regra de negócio" 
         subTitle="Orçamento"
-        modal={ModalAdd}>
+        >
         {
           orcamento.map(item => {
             return (

@@ -30,7 +30,7 @@ const Cliente = () => {
       <Content 
         title="Manutenção de cadastro" 
         subTitle="Cliente"
-        modal={ModalAdd}>
+        >
           {
             cliente.map(item => {
               return (
