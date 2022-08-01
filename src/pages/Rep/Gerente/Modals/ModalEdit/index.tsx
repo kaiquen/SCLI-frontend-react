@@ -52,6 +52,8 @@ const ModalEdit = ({gerente, modalEdit, handleModalEdit}:IProps) => {
     }
   } 
 
+  console.log(gerente);
+  
   return (
     <Modal modal={modalEdit} handleModal={handleModalEdit} >
       <div className={styles.modal__content}>

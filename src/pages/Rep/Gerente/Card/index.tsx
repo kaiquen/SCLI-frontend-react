@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FiEdit3, FiTrash2 } from "react-icons/fi";
 import { ModalTrash } from "../../../../components/Modals/ModalTrash";
 import { IGerente } from "../../../../models/gerente";
+import api from "../../../../services/api";
 import { ModalEdit } from "../Modals/ModalEdit";
 
 import styles from "./styles.module.scss";
@@ -10,13 +11,28 @@ const baseUrlGerente = "http://localhost:8080/gerente";
 
 type IProps = {
   gerente:IGerente
-  modalEdit: boolean;
-  modalTrash: boolean;
-  handleModalTrash():void;
-  handleModalEdit():void;
+  setGerente:React.Dispatch<React.SetStateAction<IGerente[]>>
 }
 
-const Card = ({gerente, modalTrash, modalEdit, handleModalTrash, handleModalEdit}:IProps) => {
+const Card = ({gerente, setGerente}:IProps) => {
+  const [modalEdit, setModalEdit] = useState<boolean>(false);
+  const [modalTrash, setModalTrash] = useState<boolean>(false);
+
+  const handleModalEdit = () => {
+    setModalEdit(!modalEdit);
+  }
+
+  const handleModalTrash = () => {
+    setModalTrash(!modalTrash);
+  }
+
+  useEffect (() => {
+    (async () => {
+      const {data} = await api.get("/gerente");
+      setGerente(data);
+    })()
+  }, [modalEdit, modalTrash]);
+
   return (
     <div className={styles.container}>
         <p className={styles.text}>{gerente.nome}</p>

@@ -8,8 +8,6 @@ import { ModalAdd } from "./Modals/ModalAdd";
 
 const Reposicao = () => {
   const [modalAdd, setModalAdd] = useState<boolean>(false);
-  const [modalEdit, setModalEdit] = useState<boolean>(false);
-  const [modalTrash, setModalTrash] = useState<boolean>(false);
 
   const [reposicao, setReposicao] = useState<IReposicao[]>([]);
   
@@ -17,20 +15,12 @@ const Reposicao = () => {
     setModalAdd(!modalAdd);
   }
 
-  const handleModalEdit = () => {
-    setModalEdit(!modalEdit);
-  }
-
-  const handleModalTrash = () => {
-    setModalTrash(!modalTrash);
-  }
-
   useEffect(() => {
     (async () => {
       const {data} = await api.get("/reposicao");
       setReposicao(data);
     })()
-  }, [modalAdd || modalEdit || modalTrash]);
+  }, [modalAdd]);
 
   return (
     <Layout
@@ -52,10 +42,7 @@ const Reposicao = () => {
               <Card 
                 key={item.id} 
                 reposicao={{...item}}
-                modalEdit={modalEdit}
-                modalTrash={modalTrash}
-                handleModalEdit={handleModalEdit}
-                handleModalTrash={handleModalTrash}
+                setReposicao={setReposicao}
               />
             )
           })
