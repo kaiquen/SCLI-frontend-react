@@ -6,6 +6,8 @@ import { Reposicao } from "../pages/Rep/Reposicao"
 import { Orc } from "../pages/Orc"
 import { Cliente } from "../pages/Orc/Cliente"
 import { Orcamento } from "../pages/Orc/Orcamento"
+import { Fun } from "../pages/Fun"
+import { Funcionario } from "../pages/Fun/Funcionario"
 
 const MainRouter = () => {
   return(
@@ -17,6 +19,9 @@ const MainRouter = () => {
       <Route path="orc" element={<Orc />} />
       <Route path="orc/cliente" element={<Cliente />} />
       <Route path="orc/orcamento" element={<Orcamento />} />
+      <Route path="fun" element={<Fun />} />
+      <Route path="fun/funcionario" element={<Funcionario />} />
+    
     </Routes>
   )
 }

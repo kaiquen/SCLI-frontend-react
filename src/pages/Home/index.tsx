@@ -7,9 +7,11 @@ const Home = () => {
       item1="Orçamento"
       item2="Pedido"
       item3="Reposição"
+      item5="Servico Funcionario"
       link1="/orc"
       link2="/pedido"
       link3="/rep"
+      link5="/fun"
       title="SCLI"
     >
       <div className={styles.content}>
