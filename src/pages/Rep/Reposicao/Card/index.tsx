@@ -17,7 +17,6 @@ type IProps = {
 const Card = ({reposicao, setReposicao}:IProps) => {
   const [modalTrash, setModalTrash] = useState<boolean>(false);
 
-  console.log(reposicao)
   const handleModalTrash = () => {
     setModalTrash(!modalTrash);
   }

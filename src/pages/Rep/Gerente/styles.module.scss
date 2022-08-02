@@ -1,13 +1,13 @@
 .tab {
   margin: 3rem 0 2rem 2rem;
-}
 
-small {
-  font-size: 1.6rem;
-  color: #777;
-  
-  &:not(:last-child) {
-    margin-right: 17rem;
+  small {
+    font-size: 1.6rem;
+    color: #777;
+    
+    &:not(:last-child) {
+      margin-right: 17rem;
+    }
   }
-
 }
+

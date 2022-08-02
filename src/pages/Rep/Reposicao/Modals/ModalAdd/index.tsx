@@ -21,9 +21,9 @@ const ModalAdd = ({handleModalAdd, modalAdd}:IProps) => {
   const [produto, setProduto] = useState<IProduto[]>([]);
   const [gerente, setGerente] = useState<IGerente[]>([]);
 
-  const [gerenteSelecionado, setGerenteSelecionado] = useState<any>();
-  const [fornecedorSelecionado, setFornecedorSelecionado] = useState<any>();
-  const [produtoSelecionado, setProdutoSelecionado] = useState<any>();
+  const [gerenteSelecionado, setGerenteSelecionado] = useState<any>("");
+  const [fornecedorSelecionado, setFornecedorSelecionado] = useState<any>("");
+  const [produtoSelecionado, setProdutoSelecionado] = useState<any>("");
 
   const [quantidade, setQuantidade] = useState<number>(1);
   
@@ -96,7 +96,8 @@ const ModalAdd = ({handleModalAdd, modalAdd}:IProps) => {
 
     fornecedorSelecionado && getProduto()
   }, [fornecedorSelecionado])
-
+  
+ 
   return (
     <Modal modal={modalAdd} handleModal={handleModalAdd} >
       <div className={styles.modal__content}>
@@ -105,7 +106,7 @@ const ModalAdd = ({handleModalAdd, modalAdd}:IProps) => {
         </div>
         <form action="" className="form"  onSubmit={handleAddReposicao}>
           <FormGroup>
-            <select  value={gerenteSelecionado?.id} onChange={handleSelecionarGerente} className={styles.select}>
+            <select  value={gerenteSelecionado?.id} onChange={handleSelecionarGerente} className={styles.select} required>
               <option value="">Selecione o gerente</option>
               {
                 gerente.map(item => {
@@ -117,7 +118,7 @@ const ModalAdd = ({handleModalAdd, modalAdd}:IProps) => {
             </select>
           </FormGroup>
           <FormGroup>
-            <select  value={fornecedorSelecionado?.id} onChange={handleSelecionarFornecedor} className={styles.select}>
+            <select  value={fornecedorSelecionado?.id} onChange={handleSelecionarFornecedor} className={styles.select} required>
               <option value="">Selecione o fornecedor</option>
               {
                 fornecedor.map(item => {
@@ -131,7 +132,7 @@ const ModalAdd = ({handleModalAdd, modalAdd}:IProps) => {
           <FormGroup>
             {
               produto.length > 0 && (
-                <select value={produtoSelecionado?.id} onChange={handleSelecionarProduto} className={styles.select}>
+                <select value={produtoSelecionado?.id} onChange={handleSelecionarProduto} className={styles.select} required>
                 <option value="">Selecione o produto</option>
 
                   {
