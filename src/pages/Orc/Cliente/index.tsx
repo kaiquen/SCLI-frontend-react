@@ -8,14 +8,20 @@ import { ModalAdd } from "./Modals/ModalAdd";
 
 
 const Cliente = () => {
+  const [modalAdd, setModalAdd] = useState<boolean>(false);
+
   const [cliente, setCliente] = useState<ICliente[]>([]);
 
-  useEffect (() => {
+  const handleModalAdd = () => {
+    setModalAdd(!modalAdd);
+  }
+
+  useEffect(() => {
     (async () => {
-      const {data} = await api.get("/cliente");
+      const { data } = await api.get("/cliente");
       setCliente(data);
     })()
-  }, []);
+  }, [modalAdd]);
 
   return (
     <Layout
@@ -27,17 +33,23 @@ const Cliente = () => {
       link3="/orc/orcamento"
       title="Cliente"
     >
-      <Content 
-        title="Manutenção de cadastro" 
+      <Content
+        title="Manutenção de cadastro"
         subTitle="Cliente"
-        >
-          {
-            cliente.map(item => {
-              return (
-                <Card key={item.id} {...item}/>
-              )
-            })
-          }
+        handleModalAdd={handleModalAdd}>
+        {
+          cliente.map(item => {
+            return (
+              <Card
+                key={item.id}
+                cliente={{ ...item }}
+                setCliente={setCliente}
+              />
+            )
+          })
+        }
+
+        <ModalAdd modalAdd={modalAdd} handleModalAdd={handleModalAdd} />
       </Content>
     </Layout>
   )

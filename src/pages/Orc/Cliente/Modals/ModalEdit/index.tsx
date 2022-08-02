@@ -10,17 +10,21 @@ import { ICliente } from "../../../../../models/cliente";
 import api from "../../../../../services/api";
 import styles from "./styles.module.scss";
 
-const ModalEdit = (props:ICliente) => {
-  const { modalEdit, handleModalEdit } = useModals();
-  
-  const [nome, setNome] = useState<string>(props.nome);
-  const [cpf,setCpf] = useState<string>(props.cpf);
-  const [email, setEmail] = useState<string>(props.email);
-  const [senha, setSenha] = useState<string>(props.senha);
-  const [uf, setUf] = useState(props.uf)
-  const [cidade, setCidade] =useState<string>(props.cidade);
-  const [bairro, setBairro] = useState<string>(props.bairro);
-  const [rua, setRua] = useState<string>(props.rua);
+type IProps = {
+  cliente: ICliente;
+  handleModalEdit(): void;
+  modalEdit: boolean;
+}
+
+const ModalEdit = ({ cliente, modalEdit, handleModalEdit }: IProps) => {
+  const [nome, setNome] = useState<string>(cliente.nome);
+  const [cpf, setCpf] = useState<string>(cliente.cpf);
+  const [email, setEmail] = useState<string>(cliente.email);
+  const [senha, setSenha] = useState<string>(cliente.senha);
+  const [uf, setUf] = useState(cliente.uf)
+  const [cidade, setCidade] = useState<string>(cliente.cidade);
+  const [bairro, setBairro] = useState<string>(cliente.bairro);
+  const [rua, setRua] = useState<string>(cliente.rua);
 
   const [error, setError] = useState<string>("");
 
@@ -29,7 +33,7 @@ const ModalEdit = (props:ICliente) => {
 
     try {
       const { data } = await api.put("/cliente", {
-        id: props.id,
+        id: cliente.id,
         nome,
         cpf,
         email,
@@ -40,114 +44,116 @@ const ModalEdit = (props:ICliente) => {
         rua
       });
 
-    
+
       data && handleModalEdit();
-      
-    } catch (error:any) {
+
+    } catch (error: any) {
       setError(error.response.data.message)
     }
-  } 
+  }
+
+  console.log(cliente);
 
   return (
     <Modal modal={modalEdit} handleModal={handleModalEdit} >
       <div className={styles.modal__content}>
         <div className={styles.modal__header}>
-            <h2 className="heading__secondary">Editar cliente</h2>
+          <h2 className="heading__secondary">Editar cliente</h2>
         </div>
         <form className="form" onSubmit={handeEditCliente}>
           <FormGroup>
-            <Input 
-                inputClassName='--border'
-                type="text"               
-                labelClassName='--black'
-                placeholder="Nome"
-                value={nome}
-                setValue={setNome}
+            <Input
+              inputClassName='--border'
+              type="text"
+              labelClassName='--black'
+              placeholder="Nome"
+              value={nome}
+              setValue={setNome}
             />
           </FormGroup>
           <FormGroup>
-            <Input 
-                inputClassName='--border'
-                type="text" 
-                labelClassName='--black'
-                placeholder="CPF"
-                value={cpf}
-                setValue={setCpf}
+            <Input
+              inputClassName='--border'
+              type="text"
+              labelClassName='--black'
+              placeholder="CPF"
+              value={cpf}
+              setValue={setCpf}
             />
           </FormGroup>
           <FormGroup>
-              <Input 
-                  inputClassName='--border'
-                  type="email" 
-                  labelClassName='--black'
-                  placeholder="Email"
-                  value={email}
-                  setValue={setEmail}
-              />
+            <Input
+              inputClassName='--border'
+              type="email"
+              labelClassName='--black'
+              placeholder="Email"
+              value={email}
+              setValue={setEmail}
+            />
           </FormGroup>
           <FormGroup>
-              <Input 
-                  inputClassName='--border'
-                  type="password" 
-                  labelClassName='--black'
-                  placeholder="Senha"
-                  value={senha}
-                  setValue={setSenha}
-              />
-          </FormGroup>   
-          <FormGroup>
-              <Input 
-                  inputClassName='--border'
-                  type="text" 
-                  labelClassName='--black'
-                  placeholder="UF"  
-                  value={uf}
-                  setValue={setUf} 
-              />
+            <Input
+              inputClassName='--border'
+              type="password"
+              labelClassName='--black'
+              placeholder="Senha"
+              value={senha}
+              setValue={setSenha}
+            />
           </FormGroup>
           <FormGroup>
-              <Input 
-                  inputClassName='--border'
-                  type="text"  
-                  labelClassName='--black'
-                  placeholder="Cidade"
-                  value={cidade}
-                  setValue={setCidade}
-              />
+            <Input
+              inputClassName='--border'
+              type="text"
+              labelClassName='--black'
+              placeholder="UF"
+              value={uf}
+              setValue={setUf}
+            />
           </FormGroup>
           <FormGroup>
-              <Input 
-                  inputClassName='--border'
-                  type="text" 
-                  labelClassName='--black'
-                  placeholder="Bairro"
-                  value={bairro}
-                  setValue={setBairro}
-              />
+            <Input
+              inputClassName='--border'
+              type="text"
+              labelClassName='--black'
+              placeholder="Cidade"
+              value={cidade}
+              setValue={setCidade}
+            />
           </FormGroup>
           <FormGroup>
-              <Input 
-                  inputClassName='--border'
-                  type="text" 
-                  labelClassName='--black'
-                  placeholder="Rua" 
-                  value={rua}
-                  setValue={setRua}                
-              />
+            <Input
+              inputClassName='--border'
+              type="text"
+              labelClassName='--black'
+              placeholder="Bairro"
+              value={bairro}
+              setValue={setBairro}
+            />
           </FormGroup>
-          <br/>
-          <br/>
+          <FormGroup>
+            <Input
+              inputClassName='--border'
+              type="text"
+              labelClassName='--black'
+              placeholder="Rua"
+              value={rua}
+              setValue={setRua}
+            />
+          </FormGroup>
+          <br />
+          <br />
           {error && (
-              <FormGroup>
-                <span className={styles.span}>{error}</span>
-              </FormGroup>
+            <FormGroup>
+              <span className={styles.span}>{error}</span>
+            </FormGroup>
           )}
           <FormGroup>
-              <Button
-                type="submit"
-                className="green"
-                title="Confirmar"
-              />
+            <Button
+              type="submit"
+              className="green"
+              title="Confirmar"
+            />
           </FormGroup>
         </form>
       </div>

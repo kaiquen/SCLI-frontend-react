@@ -6,17 +6,21 @@ import api from "../../../services/api";
 import { Card } from "./Card";
 import { ModalAdd } from "./Modals/ModalAdd";
 
-import styles from "./styles.module.scss";
-
 const Orcamento = () => {
+  const [modalAdd, setModalAdd] = useState<boolean>(false);
+
   const [orcamento, setOrcamento] = useState<IOrcamento[]>([]);
-  
+
+  const handleModalAdd = () => {
+    setModalAdd(!modalAdd);
+  }
+
   useEffect(() => {
     (async () => {
       const { data } = await api.get("/orcamento");
       setOrcamento(data);
     })()
-  }, [])
+  }, [modalAdd]);
 
   return (
     <Layout
@@ -28,17 +32,23 @@ const Orcamento = () => {
       link3="/orc/orcamento"
       title="Orçamento"
     >
-      <Content 
-        title="Regra de negócio" 
+      <Content
+        title="Regra de negócio"
         subTitle="Orçamento"
-        >
+        handleModalAdd={handleModalAdd}>
         {
           orcamento.map(item => {
             return (
-              <Card key={item.id} {...item}/>
+              <Card
+                key={item.id}
+                orcamento={{ ...item }}
+                setOrcamento={setOrcamento}
+              />
             )
           })
         }
+
+        <ModalAdd modalAdd={modalAdd} handleModalAdd={handleModalAdd} />
       </Content>
     </Layout>
   )

@@ -1,23 +1,24 @@
 
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { Button } from "../../../../../components/Button";
 import { FormGroup } from "../../../../../components/FormGroup";
 import { Input } from "../../../../../components/Input/intex";
 import { Modal } from "../../../../../components/Modals";
-import { useModals } from "../../../../../hooks/useModals";
 import api from "../../../../../services/api";
 import styles from "./styles.module.scss";
 
-const ModalAdd = () => {
-  const { modalAdd, handleModalAdd } = useModals();
-  
+type IProps = {
+  handleModalAdd(): void;
+  modalAdd: boolean;
+}
+
+const ModalAdd = ({ modalAdd, handleModalAdd }: IProps) => {
   const [nome, setNome] = useState<string>("");
-  const [cpf,setCpf] = useState<string>("");
+  const [cpf, setCpf] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [senha, setSenha] = useState<string>("");
   const [uf, setUf] = useState("")
-  const [cidade, setCidade] =useState<string>("");
+  const [cidade, setCidade] = useState<string>("");
   const [bairro, setBairro] = useState<string>("");
   const [rua, setRua] = useState<string>("");
 
@@ -38,114 +39,113 @@ const ModalAdd = () => {
         rua
       });
 
-    
       data && handleModalAdd();
-      
-    } catch (error:any) {
+
+    } catch (error: any) {
       setError(error.response.data.message)
     }
-  } 
+  }
 
   return (
     <Modal modal={modalAdd} handleModal={handleModalAdd} >
       <div className={styles.modal__content}>
         <div className={styles.modal__header}>
-            <h2 className="heading__secondary">Adicionar cliente</h2>
+          <h2 className="heading__secondary">Adicionar cliente</h2>
         </div>
         <form className="form" onSubmit={handeAddCliente}>
           <FormGroup>
-            <Input 
-                inputClassName='--border'
-                type="text"               
-                labelClassName='--black'
-                placeholder="Nome"
-                value={nome}
-                setValue={setNome}
+            <Input
+              inputClassName='--border'
+              type="text"
+              labelClassName='--black'
+              placeholder="Nome"
+              value={nome}
+              setValue={setNome}
             />
           </FormGroup>
           <FormGroup>
-            <Input 
-                inputClassName='--border'
-                type="text" 
-                labelClassName='--black'
-                placeholder="CPF"
-                value={cpf}
-                setValue={setCpf}
+            <Input
+              inputClassName='--border'
+              type="text"
+              labelClassName='--black'
+              placeholder="CPF"
+              value={cpf}
+              setValue={setCpf}
             />
           </FormGroup>
           <FormGroup>
-              <Input 
-                  inputClassName='--border'
-                  type="email" 
-                  labelClassName='--black'
-                  placeholder="Email"
-                  value={email}
-                  setValue={setEmail}
-              />
+            <Input
+              inputClassName='--border'
+              type="email"
+              labelClassName='--black'
+              placeholder="Email"
+              value={email}
+              setValue={setEmail}
+            />
           </FormGroup>
           <FormGroup>
-              <Input 
-                  inputClassName='--border'
-                  type="password" 
-                  labelClassName='--black'
-                  placeholder="Senha"
-                  value={senha}
-                  setValue={setSenha}
-              />
-          </FormGroup>   
-          <FormGroup>
-              <Input 
-                  inputClassName='--border'
-                  type="text" 
-                  labelClassName='--black'
-                  placeholder="UF"  
-                  value={uf}
-                  setValue={setUf} 
-              />
+            <Input
+              inputClassName='--border'
+              type="password"
+              labelClassName='--black'
+              placeholder="Senha"
+              value={senha}
+              setValue={setSenha}
+            />
           </FormGroup>
           <FormGroup>
-              <Input 
-                  inputClassName='--border'
-                  type="text"  
-                  labelClassName='--black'
-                  placeholder="Cidade"
-                  value={cidade}
-                  setValue={setCidade}
-              />
+            <Input
+              inputClassName='--border'
+              type="text"
+              labelClassName='--black'
+              placeholder="UF"
+              value={uf}
+              setValue={setUf}
+            />
           </FormGroup>
           <FormGroup>
-              <Input 
-                  inputClassName='--border'
-                  type="text" 
-                  labelClassName='--black'
-                  placeholder="Bairro"
-                  value={bairro}
-                  setValue={setBairro}
-              />
+            <Input
+              inputClassName='--border'
+              type="text"
+              labelClassName='--black'
+              placeholder="Cidade"
+              value={cidade}
+              setValue={setCidade}
+            />
           </FormGroup>
           <FormGroup>
-              <Input 
-                  inputClassName='--border'
-                  type="text" 
-                  labelClassName='--black'
-                  placeholder="Rua" 
-                  value={rua}
-                  setValue={setRua}                
-              />
+            <Input
+              inputClassName='--border'
+              type="text"
+              labelClassName='--black'
+              placeholder="Bairro"
+              value={bairro}
+              setValue={setBairro}
+            />
           </FormGroup>
-          <br/>
-          <br/>
+          <FormGroup>
+            <Input
+              inputClassName='--border'
+              type="text"
+              labelClassName='--black'
+              placeholder="Rua"
+              value={rua}
+              setValue={setRua}
+            />
+          </FormGroup>
+          <br />
+          <br />
           {error && (
-              <FormGroup>
-                <span className={styles.span}>{error}</span>
-              </FormGroup>
+            <FormGroup>
+              <span className={styles.span}>{error}</span>
+            </FormGroup>
           )}
           <FormGroup>
-              <Button
-                type="submit"
-                className="green"
-                title="Cadastrar"
-              />
+            <Button
+              type="submit"
+              className="green"
+              title="Cadastrar"
+            />
           </FormGroup>
         </form>
       </div>

@@ -1,23 +1,24 @@
-import { useModals } from "../../../../../hooks/useModals";
+import { useState } from "react";
+import { IOrcamento } from "../../../../../models/orcamento";
 import styles from "./styles.module.scss";
 
 type IProps = {
-  id: number;
-  url: string;
+  orcamento: IOrcamento;
+  handleModalEdit(): void;
+  modalEdit: boolean;
 }
 
-const ModalEdit = ({id, url}:IProps) => {
-  const { modalEdit, handleModalEdit } = useModals();
+const ModalEdit = ({ modalEdit, handleModalEdit, orcamento }: IProps) => {
 
   return (
-    <div 
+    <div
       className={styles.modal}
-      style={modalEdit ? {display:"flex"} : {display: "none"}}>
+      style={modalEdit ? { display: "flex" } : { display: "none" }}>
       <div className={styles.modal__content}>
-      
-      </div>  
+
+      </div>
       <div className={styles.modal__overlay} onClick={handleModalEdit}></div>
-    </div>   
+    </div>
   )
 }
 
