@@ -7,7 +7,7 @@ export type IReposicao = {
   quantidade:string;
   gerente: IGerente;
   fornecedor: IFornecedor;
-  item: [
+  itens: [
     {
       quantidade:number;
       produto:IProduto;

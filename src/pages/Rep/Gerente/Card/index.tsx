@@ -35,7 +35,15 @@ const Card = ({gerente, setGerente}:IProps) => {
 
   return (
     <div className={styles.container}>
-        <p className={styles.text}>{gerente.nome}</p>
+        <div className={styles.content}>
+          <div className={styles.content__item}>
+            <p className={styles.text}>{gerente.nome}</p>          
+          </div>
+  
+          <div className={styles.content__item}>
+            <p className={styles.text}>{gerente.cpf}</p>
+          </div>
+        </div>
 
         <div className={styles.tools}>
           <FiEdit3 className={[styles.icon, styles["icon--edit"]].join(" ")} onClick={handleModalEdit}/>

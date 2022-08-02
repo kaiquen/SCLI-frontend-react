@@ -5,7 +5,7 @@ import { IGerente } from "../../../models/gerente";
 import api from "../../../services/api";
 import { Card } from "./Card";
 import { ModalAdd } from "./Modals/ModalAdd";
-
+import styles from "./styles.module.scss";
 
 const Gerente = () => {
   const [modalAdd, setModalAdd] = useState<boolean>(false);
@@ -37,6 +37,11 @@ const Gerente = () => {
         title="Manutenção de cadastro" 
         subTitle="Gerente"
         handleModalAdd={handleModalAdd}>
+
+        <div className={styles.tab}>
+          <small>Nome</small>
+          <small>Cpf</small>
+        </div>
           {
             gerente.map(item => {
               return (

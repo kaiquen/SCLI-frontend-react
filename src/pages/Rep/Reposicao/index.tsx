@@ -5,6 +5,7 @@ import { IReposicao } from "../../../models/reposicao";
 import api from "../../../services/api";
 import { Card } from "./Card";
 import { ModalAdd } from "./Modals/ModalAdd";
+import styles from "./styles.module.scss";
 
 const Reposicao = () => {
   const [modalAdd, setModalAdd] = useState<boolean>(false);
@@ -36,6 +37,13 @@ const Reposicao = () => {
         title="Regra de negócio" 
         subTitle="Reposição"
         handleModalAdd={handleModalAdd}>
+        
+        <div className={styles.tab}>
+          <small>Gerente</small>
+          <small>Qtd</small>
+          <small>Produto</small>
+          <small>Fornecedor</small>
+        </div>
         {
           reposicao.map(item => {
             return (

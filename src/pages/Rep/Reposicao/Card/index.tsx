@@ -15,13 +15,9 @@ type IProps = {
 }
 
 const Card = ({reposicao, setReposicao}:IProps) => {
-  const [modalEdit, setModalEdit] = useState<boolean>(false);
   const [modalTrash, setModalTrash] = useState<boolean>(false);
 
-  const handleModalEdit = () => {
-    setModalEdit(!modalEdit);
-  }
-
+  console.log(reposicao)
   const handleModalTrash = () => {
     setModalTrash(!modalTrash);
   }
@@ -31,18 +27,30 @@ const Card = ({reposicao, setReposicao}:IProps) => {
       const {data} = await api.get("/reposicao");
       setReposicao(data);
     })()
-  }, [modalEdit || modalTrash]);
+  }, [modalTrash]);
 
   return (
     <div className={styles.container}>
-        <p className={styles.text}>{reposicao.id}</p>
+        <div className={styles.content}>
+          <div className={styles.content__item}>
+            <p className={styles.text}>{reposicao.gerente.nome}</p>
+          </div>
+          <div className={styles.content__item}>
+            <p className={styles.text}>{reposicao.quantidade}</p>
+          </div>
+          <div className={styles.content__item}>
+            <p className={styles.text}>{reposicao.itens[0].produto.nome}</p>
+          </div>
+          <div className={styles.content__item}>
+            <p className={styles.text}>{reposicao.fornecedor.nome}</p>
+          </div>
+
+        </div>
         <div className={styles.tools}>
-          <FiEdit3 className={[styles.icon, styles["icon--edit"]].join(" ")}  onClick={handleModalEdit} />
           <FiTrash2 className={[styles.icon, styles["icon--trash"]].join(" ")} onClick={handleModalTrash} />
         </div>
 
         <ModalTrash id={reposicao.id} url={baseUrlReposicao} modalTrash={modalTrash} handleModalTrash={handleModalTrash}/>
-        <ModalEdit reposicao={{...reposicao}} modalEdit={modalEdit} handleModalEdit={handleModalEdit}/>
     </div>
   )
 }

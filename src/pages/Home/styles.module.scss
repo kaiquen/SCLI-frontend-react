@@ -1,3 +1,13 @@
-.container {
-  color: red;
+
+.content {
+  background-color: #f4f4f4;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__logo {
+    width: 34rem;
+    height: 34rem;
+  }
 }

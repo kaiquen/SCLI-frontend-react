@@ -7,16 +7,14 @@ const Home = () => {
       item1="Orçamento"
       item2="Pedido"
       item3="Reposição"
-      item4="nome 1"
-      item5="nom 2"
       link1="/orc"
       link2="/pedido"
       link3="/rep"
-      link4=""
-      link5=""
       title="SCLI"
     >
-      
+      <div className={styles.content}>
+        <img src="./images/logo.png" alt="" className={styles.content__logo}/>
+      </div>
     </Layout>
   );
 }

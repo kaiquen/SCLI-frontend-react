@@ -18,6 +18,33 @@
 
 }
 
+.content {
+  display: flex;
+  
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 15rem;
+    margin-right: 2rem;
+    overflow: hidden;
+   
+    
+    &:nth-child(2) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 5rem;
+    
+      margin-right: 7rem;
+    }
+
+    &:last-child {
+      margin-left: 1.5rem;
+    }
+  }
+}
+
 .icon {
   width: 2rem;
   height: 2rem;

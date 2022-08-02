@@ -41,3 +41,19 @@
     scale: 1;
   }
 }
+
+.content {
+  display: flex;
+  
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 20rem;
+    margin-right: 2rem;
+    overflow: hidden;
+   
+    
+    
+  }
+}

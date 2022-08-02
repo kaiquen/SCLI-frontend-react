@@ -54,7 +54,7 @@ const ModalAdd = ({handleModalAdd, modalAdd}:IProps) => {
             produto:JSON.parse(produtoSelecionado)
         }]
       })
-      
+
       data && handleModalAdd();
       
     } catch (error:any) {
