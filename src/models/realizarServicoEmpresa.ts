@@ -1,7 +1,7 @@
 import { IServico } from "./servico";
 import { IEmpresaTerceirizada } from "./empresaTerceirizada";
 
-export type IOrcamento = {
+export type IRealizarServicoEmpresa = {
   id:number;
   dataInicio: Date;
   status: boolean;

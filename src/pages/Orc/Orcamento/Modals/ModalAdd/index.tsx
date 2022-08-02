@@ -5,9 +5,8 @@ import { Button } from "../../../../../components/Button";
 import { FormGroup } from "../../../../../components/FormGroup";
 import { Input } from "../../../../../components/Input/intex";
 import { Modal } from "../../../../../components/Modals";
-import { IFornecedor } from "../../../../../models/fornecedor";
-import { IGerente } from "../../../../../models/gerente";
-import { IProduto } from "../../../../../models/Produto";
+import { IServico } from "../../../../../models/servico";
+import { ICliente } from "../../../../../models/cliente";
 import api from "../../../../../services/api";
 import styles from "./styles.module.scss";
 
@@ -17,42 +16,33 @@ type IProps = {
 }
 
 const ModalAdd = ({ handleModalAdd, modalAdd }: IProps) => {
-  const [fornecedor, setFornecedor] = useState<IFornecedor[]>([]);
-  const [produto, setProduto] = useState<IProduto[]>([]);
-  const [gerente, setGerente] = useState<IGerente[]>([]);
+  const [servico, setServico] = useState<IServico[]>([]);
+  const [cliente, setCliente] = useState<ICliente[]>([]);
 
-  const [gerenteSelecionado, setGerenteSelecionado] = useState<any>();
-  const [fornecedorSelecionado, setFornecedorSelecionado] = useState<any>();
-  const [produtoSelecionado, setProdutoSelecionado] = useState<any>();
+
+  const [clienteSelecionado, setClienteSelecionado] = useState<any>();
+  const [servicoSelecionado, setServicoSelecionado] = useState<any>();
 
   const [quantidade, setQuantidade] = useState<number>(1);
 
   const [error, setError] = useState<string>("");
 
-  const handleSelecionarFornecedor = (event: any) => {
-    setFornecedorSelecionado(event.target.value)
+  const handleSelecionarServico = (event: any) => {
+    setServicoSelecionado(event.target.value)
   }
 
-  const handleSelecionarProduto = (event: any) => {
-    setProdutoSelecionado(event.target.value)
+  const handleSelecionarCliente = (event: any) => {
+    setClienteSelecionado(event.target.value)
   }
 
-  const handleSelecionarGerente = (event: any) => {
-    setGerenteSelecionado(event.target.value)
-  }
-
-  const handleAddReposicao = async (event: any) => {
+  const handleAddOrcamento = async (event: any) => {
     event.preventDefault();
 
     try {
-      const { data } = await api.post("/reposicao", {
+      const { data } = await api.post("/orcamento", {
         quantidade,
-        gerente: JSON.parse(gerenteSelecionado),
-        fornecedor: JSON.parse(fornecedorSelecionado),
-        itens: [{
-          quantidade,
-          produto: JSON.parse(produtoSelecionado)
-        }]
+        cliente: JSON.parse(clienteSelecionado),
+        servico: JSON.parse(servicoSelecionado),
       })
 
       data && handleModalAdd();
@@ -65,8 +55,8 @@ const ModalAdd = ({ handleModalAdd, modalAdd }: IProps) => {
   useEffect(() => {
     (async () => {
       try {
-        const { data } = await api.get('/fornecedor');
-        setFornecedor(data);
+        const { data } = await api.get('/servico');
+        setServico(data);
       } catch (error) {
         alert(error);
       }
@@ -76,39 +66,28 @@ const ModalAdd = ({ handleModalAdd, modalAdd }: IProps) => {
   useEffect(() => {
     (async () => {
       try {
-        const { data } = await api.get('/gerente');
-        setGerente(data);
+        const { data } = await api.get('/cliente');
+        setCliente(data);
       } catch (error) {
         alert(error);
       }
     })()
   }, [])
 
-  useEffect(() => {
-    const getProduto = async () => {
-      try {
-        const { data } = await api.get(`/produto/${JSON.parse(fornecedorSelecionado).id}`)
-        setProduto(data);
-      } catch (error) {
-        alert(error);
-      }
-    }
-
-    fornecedorSelecionado && getProduto()
-  }, [fornecedorSelecionado])
-
   return (
     <Modal modal={modalAdd} handleModal={handleModalAdd} >
       <div className={styles.modal__content}>
         <div className={styles.modal__header}>
-          <h2 className="heading__secondary">Adicionar Orcamento</h2>
+          <h2 className="heading__secondary">Adicionar Orçamento</h2>
         </div>
-        <form action="" className="form" onSubmit={handleAddReposicao}>
+        <form action="" className="form" onSubmit={handleAddOrcamento}>
           <FormGroup>
-            <select value={gerenteSelecionado?.id} onChange={handleSelecionarGerente} className={styles.select}>
+            <h3>Nome</h3>
+            <select value={clienteSelecionado?.id} onChange={handleSelecionarCliente} className={styles.select}>
+
               <option value="">Selecione o cliente</option>
               {
-                gerente.map(item => {
+                cliente.map(item => {
                   return (
                     <option key={item.id} value={JSON.stringify(item)}>{item.nome}</option>
                   );
@@ -117,43 +96,33 @@ const ModalAdd = ({ handleModalAdd, modalAdd }: IProps) => {
             </select>
           </FormGroup>
           <FormGroup>
-            <select value={fornecedorSelecionado?.id} onChange={handleSelecionarFornecedor} className={styles.select}>
+            <h3>Serviço</h3>
+            <select value={servicoSelecionado?.id} onChange={handleSelecionarServico} className={styles.select}>
               <option value="">Selecione o serviço</option>
               {
-                fornecedor.map(item => {
+                servico.map(item => {
                   return (
-                    <option key={item.id} value={JSON.stringify(item)}>{item.nome}</option>
+                    <option key={item.id} value={JSON.stringify(item)}>{item.id}</option>
                   );
                 })
               }
             </select>
           </FormGroup>
           <FormGroup>
-            {
-              produto.length > 0 && (
-                <select value={produtoSelecionado?.id} onChange={handleSelecionarProduto} className={styles.select}>
-                  <option value="">Selecione o produto</option>
-
-                  {
-                    produto.map(item => {
-                      return (
-                        <option key={item.id} value={JSON.stringify(item)}>{item.nome}</option>
-                      );
-                    })
-                  }
-                </select>
-              )
-            }
+            <h3>Descrição</h3>
+            <input type="text" value=""></input>
           </FormGroup>
           <FormGroup>
-            <Input
-              inputClassName='--border'
-              type="number"
-              labelClassName='--black'
-              placeholder="Quantidade"
-              value={quantidade}
-              setValue={setQuantidade}
-            />
+            <h3>Data início</h3>
+            <input type="date" value=""></input>
+          </FormGroup>
+          <FormGroup>
+            <h3>Data Entrega</h3>
+            <input type="date" value=""></input>
+          </FormGroup>
+          <FormGroup>
+            <h3>Valor</h3>
+            <input type="text" value=""></input>
           </FormGroup>
           <br />
           <br />
@@ -168,6 +137,14 @@ const ModalAdd = ({ handleModalAdd, modalAdd }: IProps) => {
               className="green"
               title="Cadastrar"
             />
+          </FormGroup>
+          <FormGroup>
+            <h3>Listar cliente</h3>
+            <h3>Por UF</h3>
+            <select>
+              <option value="">UF</option>
+            </select>
+            <h3>Total de clientes</h3>
           </FormGroup>
         </form>
       </div>
