@@ -1,0 +1,43 @@
+.container {
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+  margin-bottom: 1rem;
+  border-radius: .5rem;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.text {
+  font-size: 1.8rem;
+  color: #444;
+}
+
+.tools {
+
+}
+
+.icon {
+  width: 2rem;
+  height: 2rem;
+  margin-left: 2rem;
+  cursor: pointer;
+  
+  &--trash {
+    color: red;
+  }
+
+  &--edit {
+    color: green;
+  }
+
+  &:hover {
+    opacity: .7;
+    scale: 1.1;
+  }
+
+  &:active {
+    scale: 1;
+  }
+}
