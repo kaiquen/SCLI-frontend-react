@@ -6,38 +6,34 @@ import { FormGroup } from "../../../../../components/FormGroup";
 import { Input } from "../../../../../components/Input/intex";
 import { Modal } from "../../../../../components/Modals";
 import { useModals } from "../../../../../hooks/useModals";
-import { IGerente } from "../../../../../models/gerente";
+import { IEmpresaTerceirizada } from "../../../../../models/empresaTerceirizada";
 import api from "../../../../../services/api";
 import styles from "./styles.module.scss";
 
 type IProps = {
-  gerente: IGerente;
+  empresa: IEmpresaTerceirizada;
   handleModalEdit():void;
   modalEdit: boolean;
 }
 
-const ModalEdit = ({gerente, modalEdit, handleModalEdit}:IProps) => {
-  const [nome, setNome] = useState<string>(gerente.nome);
-  const [cpf,setCpf] = useState<string>(gerente.cpf);
-  const [email, setEmail] = useState<string>(gerente.email);
-  const [senha, setSenha] = useState<string>(gerente.senha);
-  const [uf, setUf] = useState(gerente.uf)
-  const [cidade, setCidade] =useState<string>(gerente.cidade);
-  const [bairro, setBairro] = useState<string>(gerente.bairro);
-  const [rua, setRua] = useState<string>(gerente.rua);
+const ModalEdit = ({empresa, modalEdit, handleModalEdit}:IProps) => {
+  const [nome, setNome] = useState<string>(empresa.nome);
+  const [cnpj, setCnpj] = useState<string>(empresa.cnpj);
+  const [uf, setUf] = useState(empresa.uf)
+  const [cidade, setCidade] =useState<string>(empresa.cidade);
+  const [bairro, setBairro] = useState<string>(empresa.bairro);
+  const [rua, setRua] = useState<string>(empresa.rua);
 
   const [error, setError] = useState<string>("");
 
-  const handeEditGerente = async (event: React.FormEvent) => {
+  const handeEditEmpresa = async (event: React.FormEvent) => {
     event.preventDefault();
 
     try {
-      const { data } = await api.put("/gerente", {
-        id: gerente.id,
+      const { data } = await api.put("/empresaterceirizada", {
+        id: empresa.id,
         nome,
-        cpf,
-        email,
-        senha,
+        cnpj,
         uf,
         cidade,
         bairro,
@@ -52,15 +48,15 @@ const ModalEdit = ({gerente, modalEdit, handleModalEdit}:IProps) => {
     }
   } 
 
-  console.log(gerente);
+  console.log(empresa);
   
   return (
     <Modal modal={modalEdit} handleModal={handleModalEdit} >
       <div className={styles.modal__content}>
         <div className={styles.modal__header}>
-            <h2 className="heading__secondary">Editar gerente</h2>
+            <h2 className="heading__secondary">Editar empresa</h2>
         </div>
-        <form className="form" onSubmit={handeEditGerente}>
+        <form className="form" onSubmit={handeEditEmpresa}>
           <FormGroup>
             <Input 
                 inputClassName='--border'
@@ -76,31 +72,11 @@ const ModalEdit = ({gerente, modalEdit, handleModalEdit}:IProps) => {
                 inputClassName='--border'
                 type="text" 
                 labelClassName='--black'
-                placeholder="CPF"
-                value={cpf}
-                setValue={setCpf}
+                placeholder="CNPJ"
+                value={cnpj}
+                setValue={setCnpj}
             />
-          </FormGroup>
-          <FormGroup>
-              <Input 
-                  inputClassName='--border'
-                  type="email" 
-                  labelClassName='--black'
-                  placeholder="Email"
-                  value={email}
-                  setValue={setEmail}
-              />
-          </FormGroup>
-          <FormGroup>
-              <Input 
-                  inputClassName='--border'
-                  type="password" 
-                  labelClassName='--black'
-                  placeholder="Senha"
-                  value={senha}
-                  setValue={setSenha}
-              />
-          </FormGroup>   
+          </FormGroup> 
           <FormGroup>
               <Input 
                   inputClassName='--border'

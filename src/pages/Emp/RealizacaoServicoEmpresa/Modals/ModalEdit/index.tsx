@@ -1,14 +1,14 @@
 import { useState } from "react";
-import { IReposicao } from "../../../../../models/reposicao";
+import { IRealizarServicoEmpresa } from "../../../../../models/realizarServicoEmpresa";
 import styles from "./styles.module.scss";
 
 type IProps = {
-  reposicao: IReposicao;
+  realizarEmpresa: IRealizarServicoEmpresa;
   handleModalEdit():void;
   modalEdit: boolean;
 }
 
-const ModalEdit = ({modalEdit, handleModalEdit, reposicao}:IProps) => {
+const ModalEdit = ({modalEdit, handleModalEdit, realizarEmpresa}:IProps) => {
  
   return (
     <div 

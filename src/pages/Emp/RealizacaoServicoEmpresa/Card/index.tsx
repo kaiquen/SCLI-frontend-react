@@ -1,20 +1,20 @@
 import { useEffect, useState } from "react";
 import { FiEdit3, FiTrash2 } from "react-icons/fi";
 import { ModalTrash } from "../../../../components/Modals/ModalTrash";
-import { IReposicao } from "../../../../models/reposicao";
+import { IRealizarServicoEmpresa } from "../../../../models/realizarServicoEmpresa";
 import api from "../../../../services/api";
 import { ModalEdit } from "../Modals/ModalEdit";
 
 import styles from "./styles.module.scss";
 
-const baseUrlReposicao = "http://localhost:8080/reposicao";
+const baseUrlRealizarEmpresa = "http://localhost:8080/realizarservicoempresa";
 
 type IProps = {
-  reposicao:IReposicao  
-  setReposicao:React.Dispatch<React.SetStateAction<IReposicao[]>>
+  realizarEmpresa:IRealizarServicoEmpresa
+  setRealizarEmpresa:React.Dispatch<React.SetStateAction<IRealizarServicoEmpresa[]>>
 }
 
-const Card = ({reposicao, setReposicao}:IProps) => {
+const Card = ({realizarEmpresa, setRealizarEmpresa}:IProps) => {
   const [modalEdit, setModalEdit] = useState<boolean>(false);
   const [modalTrash, setModalTrash] = useState<boolean>(false);
 
@@ -28,21 +28,21 @@ const Card = ({reposicao, setReposicao}:IProps) => {
 
   useEffect(() => {
     (async () => {
-      const {data} = await api.get("/reposicao");
-      setReposicao(data);
+      const {data} = await api.get("/realizarservicoempresa");
+      setRealizarEmpresa(data);
     })()
   }, [modalEdit || modalTrash]);
 
   return (
     <div className={styles.container}>
-        <p className={styles.text}>{reposicao.id}</p>
+        <p className={styles.text}>{realizarEmpresa.id}</p>
         <div className={styles.tools}>
           <FiEdit3 className={[styles.icon, styles["icon--edit"]].join(" ")}  onClick={handleModalEdit} />
           <FiTrash2 className={[styles.icon, styles["icon--trash"]].join(" ")} onClick={handleModalTrash} />
         </div>
 
-        <ModalTrash id={reposicao.id} url={baseUrlReposicao} modalTrash={modalTrash} handleModalTrash={handleModalTrash}/>
-        <ModalEdit reposicao={{...reposicao}} modalEdit={modalEdit} handleModalEdit={handleModalEdit}/>
+        <ModalTrash id={realizarEmpresa.id} url={baseUrlRealizarEmpresa} modalTrash={modalTrash} handleModalTrash={handleModalTrash}/>
+        <ModalEdit realizarEmpresa={{...realizarEmpresa}} modalEdit={modalEdit} handleModalEdit={handleModalEdit}/>
     </div>
   )
 }

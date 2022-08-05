@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Content } from "../../../components/Content";
 import { Layout } from "../../../components/Layout";
-import { IReposicao } from "../../../models/reposicao";
+import { IRealizarServicoEmpresa } from "../../../models/realizarServicoEmpresa";
 import api from "../../../services/api";
 import { Card } from "./Card";
 import { ModalAdd } from "./Modals/ModalAdd";
@@ -9,7 +9,7 @@ import { ModalAdd } from "./Modals/ModalAdd";
 const RealizarServicoEmpresa = () => {
   const [modalAdd, setModalAdd] = useState<boolean>(false);
 
-  const [reposicao, setReposicao] = useState<IReposicao[]>([]);
+  const [realizarEmpresa, setRealizarEmpresa] = useState<IRealizarServicoEmpresa[]>([]);
   
   const handleModalAdd = () => {
     setModalAdd(!modalAdd);
@@ -18,7 +18,7 @@ const RealizarServicoEmpresa = () => {
   useEffect(() => {
     (async () => {
       const {data} = await api.get("/realizarservicoempresa");
-      setReposicao(data);
+      setRealizarEmpresa(data);
     })()
   }, [modalAdd]);
 
@@ -37,12 +37,12 @@ const RealizarServicoEmpresa = () => {
         subTitle="Realizar Serviço Empresa"
         handleModalAdd={handleModalAdd}>
         {
-          reposicao.map(item => {
+          realizarEmpresa.map(item => {
             return (
               <Card 
                 key={item.id} 
-                reposicao={{...item}}
-                setReposicao={setReposicao}
+                realizarEmpresa={{...item}}
+                setRealizarEmpresa={setRealizarEmpresa}
               />
             )
           })

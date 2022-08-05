@@ -14,9 +14,7 @@ type IProps = {
 
 const ModalAdd = ({modalAdd, handleModalAdd}:IProps) => {  
   const [nome, setNome] = useState<string>("");
-  const [cpf,setCpf] = useState<string>("");
-  const [email, setEmail] = useState<string>("");
-  const [senha, setSenha] = useState<string>("");
+  const [cnpj,setCnpj] = useState<string>("");
   const [uf, setUf] = useState("")
   const [cidade, setCidade] =useState<string>("");
   const [bairro, setBairro] = useState<string>("");
@@ -24,15 +22,13 @@ const ModalAdd = ({modalAdd, handleModalAdd}:IProps) => {
 
   const [error, setError] = useState<string>("");
 
-  const handeAddGerente = async (event: React.FormEvent) => {
+  const handeAddEmpresa = async (event: React.FormEvent) => {
     event.preventDefault();
 
     try {
-      const { data } = await api.post("/gerente", {
+      const { data } = await api.post("/empresaterceirizada", {
         nome,
-        cpf,
-        email,
-        senha,
+        cnpj,
         uf,
         cidade,
         bairro,
@@ -50,9 +46,9 @@ const ModalAdd = ({modalAdd, handleModalAdd}:IProps) => {
     <Modal modal={modalAdd} handleModal={handleModalAdd} >
       <div className={styles.modal__content}>
         <div className={styles.modal__header}>
-            <h2 className="heading__secondary">Adicionar gerente</h2>
+            <h2 className="heading__secondary">Adicionar empresa</h2>
         </div>
-        <form className="form" onSubmit={handeAddGerente}>
+        <form className="form" onSubmit={handeAddEmpresa}>
           <FormGroup>
             <Input 
                 inputClassName='--border'
@@ -68,31 +64,11 @@ const ModalAdd = ({modalAdd, handleModalAdd}:IProps) => {
                 inputClassName='--border'
                 type="text" 
                 labelClassName='--black'
-                placeholder="CPF"
-                value={cpf}
-                setValue={setCpf}
+                placeholder="CNPJ"
+                value={cnpj}
+                setValue={setCnpj}
             />
           </FormGroup>
-          <FormGroup>
-              <Input 
-                  inputClassName='--border'
-                  type="email" 
-                  labelClassName='--black'
-                  placeholder="Email"
-                  value={email}
-                  setValue={setEmail}
-              />
-          </FormGroup>
-          <FormGroup>
-              <Input 
-                  inputClassName='--border'
-                  type="password" 
-                  labelClassName='--black'
-                  placeholder="Senha"
-                  value={senha}
-                  setValue={setSenha}
-              />
-          </FormGroup>   
           <FormGroup>
               <Input 
                   inputClassName='--border'
